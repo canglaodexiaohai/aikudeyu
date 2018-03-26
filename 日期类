@@ -150,9 +150,24 @@ public:
 		return *this;
 	}
 	int operator-(const Date& d)
-	{
-
-	}
+	{ 
+	        Date Max(*this);
+		Date Min(d);
+		int flag = 1;
+		if (*this < d)
+		{
+			Max = d;
+			Min = *this;
+			flag = -1;
+		}
+		int days = 0;
+		while (Max != Min)
+		{
+			--Max;
+			++days;
+		}
+		return days*flag;
+   	}
 
 	//++d1 
 	Date& operator++() // 前置 
